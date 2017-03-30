@@ -130,19 +130,8 @@ class Stack:
 
      def pop(self):
          return self.items.pop()
-        
-     def size(self):
-         return len(self.items)
     
-
-class State_info :
-    
-    def __init__(self, config, parent, depth):
-        self.config  = config
-        self.parent = parent
-        self.depth = depth
-     
-        
+         
 if __name__ == "__main__":
     
     if checkSolvability(initial_state) == True :
