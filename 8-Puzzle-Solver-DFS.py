@@ -40,7 +40,7 @@ def DFS_Search(initial_state, goal_state) :
     state_info[initial_state] = (None,0)
     
     while len(open_states) > 0 :
-        current_state,exist = open_states.popitem()
+        current_state,exist = open_states.popitem(last=True)
         parent,depth = state_info[current_state]
         explored_states[current_state] = True
         if current_state == goal_state:
