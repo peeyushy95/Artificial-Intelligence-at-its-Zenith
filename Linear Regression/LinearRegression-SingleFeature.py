@@ -30,11 +30,25 @@ def plot_dataset(x,y):
     plt.xlabel('Head Size')
     plt.ylabel('Brain Weight')
     plt.show()  
+
+class Linear_Regression :
+    
+    def __init__(self,dataset_x,dataset_y):
+        self.x = dataset_x
+        self.x = dataset_y
+        
+    def gradient_descent(x,y):
+        self.betaOne = 0
+        self.betaTwo = 0
+        
     
 if __name__ == "__main__":
-    x = []
-    y = []
-    load_dataset(x,y)
-    plot_dataset(x,y)
+    dataset_x = []
+    dataset_y = []
+    load_dataset(dataset_x,dataset_y)
+    plot_dataset(dataset_x,dataset_y)
+    
+    lr = Linear_Regression(dataset_x,dataset_y)
+    lr.gradient_descent()
    
     
