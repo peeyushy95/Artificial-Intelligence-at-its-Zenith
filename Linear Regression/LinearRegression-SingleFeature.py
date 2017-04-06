@@ -1,8 +1,9 @@
+import csv
 import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as ax
 
-def loadDataset():
+def load_dataset(x,y):
     '''
         Dataset Column
         Gender (1=Male, 2=Female)
@@ -10,25 +11,30 @@ def loadDataset():
         Head size (cm^3)
         Brain weight (grams)
     '''
-    f1 = open('brainHead.csv','rb')
-    x = []
-    y = []
-    i = 0
-    data = f1.read()
-    print(data)
-    idata = data.split('\n')
-    for i in xrange(len(idata)):
-        element = idata[i].split(",")
-        x.append(float(element[0]))
-        temp = element[1]
-        if i == len(idata):
-            y.append(float(element[1]))
-        else:
-            y.append(float(temp[:-1]))
-    print ("x = ",x)
-    print ("y = ",y)
-    print ()
+    
+    with open('brainHead.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            x.append(int(row[2]))
+            y.append(int(row[3]))
+    
+   
+#    print ("x = ",x)
+#    print ("y = ",y)
+#    print ()
+
+def plot_dataset(x,y):
+    
+    plt.scatter(x,y)
+    plt.title('Scatter plot')
+    plt.xlabel('Head Size')
+    plt.ylabel('Brain Weight')
+    plt.show()  
     
 if __name__ == "__main__":
-    loadDataset()
+    x = []
+    y = []
+    load_dataset(x,y)
+    plot_dataset(x,y)
+   
     
