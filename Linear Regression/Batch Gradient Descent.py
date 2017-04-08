@@ -1,8 +1,6 @@
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
-import mpl_toolkits.mplot3d.axes3d as ax
-from sklearn.datasets.samples_generator import make_regression 
 def load_dataset(x,y):
     
     with open('data.csv') as csvfile:
@@ -41,10 +39,8 @@ class Linear_Regression :
         converged = False
         # J(theta)
         J = 2.0/n * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
-        
-        print(n)
-        while not converged :
-            
+    
+        while not converged :          
             gradZero = 1.0/n * sum([ (self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
             gradOne = 1.0/n * sum([ (self.betaZero + self.betaOne*self.x[i] - self.y[i])*self.x[i] for i in range(n)])
             
@@ -55,20 +51,16 @@ class Linear_Regression :
             
             if abs(J - error) < ep :
                 print ("Converged")
-                converged = True
-            
-            J = error
-            
-            iter += 1
-            
+                converged = True           
+            J = error           
+            iter += 1           
             if iter == max_iter :
                 print("Max iteration Reached")
                 converged = True
     
     def R_function(self):
         self.predicted_y = []
-        temp = 0.0
-        tempsum = 0.0
+        tempsum = 0
         n = len(self.x)
         for i in range(n):
             self.predicted_y.append(self.betaZero+self.betaOne*self.x[i])
