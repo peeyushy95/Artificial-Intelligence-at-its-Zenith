@@ -73,23 +73,52 @@ class Linear_Regression :
         for i in range(n):
             self.predicted_y.append(self.betaZero+self.betaOne*self.x[i])
             diff = self.y[i] - self.predicted_y[i]
-            temp = float(diff*diff)
-            tempsum += temp
+            tempsum += diff*diff
         R = 1/(2.0*n)*tempsum
         print ("R = ",R)
         print ()
         
-    def plot_line(self):
+    def plot_regression_line(self):
         self.R_function()
         plt.scatter(self.x,self.y)
-        plt.plot(self.x,self.predicted_y)
+        plt.plot(self.x,self.predicted_y, '--r')
         plt.title('Plot Regression Line')
         plt.xlabel('x')
         plt.ylabel('y')
         plt.show()  
+    
+    def plot_cost_function(self):
+        costfn = []
+        iteration = 50
+        betaZero = np.linspace(0.0, 0.1, num = iteration)
+        betaOne = np.linspace(1.0, 1.5, num = iteration)
+        betaZeroEntries = []
+        betaOneEntries = []
+        n = len(self.x)
+        for i in range(iteration):
+            for k in range(iteration):
+                del  self.predicted_y[:]
+                tempsum = 0.0
+                betaZeroEntries.append(betaZero[i])
+                betaOneEntries.append(betaOne[k])            
+                for j in range(n):
+                    self.predicted_y.append(betaZero[i]+ betaOne[k]*self.x[j])
+                    diff = self.y[j] - self.predicted_y[j] 
+                    tempsum += diff*diff
+                costfn.append(1/(2.0*n)*tempsum)
+    
+        fig = plt.figure()
+        figure = fig.add_subplot(1,1,1, projection="3d")
+        figure.plot(betaZeroEntries, betaOneEntries, costfn, linestyle = "none", marker = ".", mfc = "none", markeredgecolor = "green")
+        figure.set_title("CostFunction")
+        figure.set_xlabel("BetaZero")
+        figure.set_ylabel("BetaOne")
+        figure.set_zlabel("Cost")
+        plt.show()
         
     
 if __name__ == "__main__":
+    
     dataset_x = []
     dataset_y = []
     load_dataset(dataset_x,dataset_y)
@@ -97,6 +126,7 @@ if __name__ == "__main__":
     
     lr = Linear_Regression(dataset_x,dataset_y)
     lr.batch_gradient_descent()
-    lr.plot_line()
+    lr.plot_regression_line()   
+    lr.plot_cost_function()
    
     
