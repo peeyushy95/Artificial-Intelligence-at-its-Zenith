@@ -45,6 +45,8 @@ class Linear_Regression :
         
         self.betaOne = (sum_xy - (1.0/n*sum_x*sum_y))/(sum_x2 - (1.0/n*(sum_x*sum_x)))
         self.betaZero = 1.0/n*(sum_y  - self.betaOne*sum_x)
+        
+        print("Beta: ",self.betaZero,self.betaOne)
            
     def R_function(self):
         self.predicted_y = []
