@@ -1,6 +1,8 @@
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
 def load_dataset(x,y):
     
     with open('data.csv') as csvfile:
@@ -57,6 +59,7 @@ class Linear_Regression :
             if iter == max_iter :
                 print("Max iteration Reached")
                 converged = True
+        print(self.betaZero,self.betaOne)
     
     def R_function(self):
         self.predicted_y = []
@@ -68,7 +71,7 @@ class Linear_Regression :
             tempsum += diff*diff
         R = 1/(2.0*n)*tempsum
         print ("R = ",R)
-        print ()
+        print("")
         
     def plot_regression_line(self):
         self.R_function()
@@ -107,7 +110,6 @@ class Linear_Regression :
         figure.set_ylabel("BetaOne")
         figure.set_zlabel("Cost")
         plt.show()
-        
     
 if __name__ == "__main__":
     
