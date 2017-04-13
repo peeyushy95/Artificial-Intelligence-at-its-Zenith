@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 13 22:31:13 2017
+
+@author: Megamindo_0
+"""
+
+
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -5,7 +13,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 def load_dataset(x,y):
     
-    with open('data.csv') as csvfile:
+    with open('chessboard.csv') as csvfile:
         readCSV = csv.reader(csvfile, delimiter=',')
         for row in readCSV:
             x.append(float(row[0]))
