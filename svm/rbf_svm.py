@@ -96,7 +96,7 @@ class Support_Vector_Machine :
         plt.legend((plot0, plot1), ('label 0', 'label 1'), scatterpoints = 1)
         plt.xlabel('A')
         plt.ylabel('B')
-        plt.title("Polynomial kernel")
+        plt.title("RBF kernel")
         plt.contourf(Xplot, Yplot, predicted, alpha=0.5)
         plt.show()
 
