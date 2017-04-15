@@ -76,12 +76,11 @@ class Support_Vector_Machine :
                     bestScore = score
                     self.bestScoreErrorPenalty = c
                     self.bestScoreDegree = d
-                print ("Mean score for C(",c,",d",d,"):",(score/float(5))*100,"%")
+                print ("Mean score for C(",c,"),d(",d,"):",(score/float(5))*100,"%")
                  
     def plot_svm(self):
         c = self.bestScoreErrorPenalty
         d = self.bestScoreDegree
-        print(c,d)
         A0 = [row[0] for row in self.dataset if row[2] == 0]
         A1 = [row[0] for row in self.dataset if row[2] == 1]
         B0 = [row[1] for row in self.dataset if row[2] == 0]
