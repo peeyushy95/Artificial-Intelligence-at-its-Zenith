@@ -10,7 +10,6 @@ import csv
 import numpy as np
 from sklearn import svm
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 from sklearn.model_selection import StratifiedKFold
 
 def load_dataset(xy,x,y):
