@@ -99,11 +99,11 @@ class Linear_Regression :
         print ("R = ",R)
         print("")
         
-    def plot_regression_line(self):
+    def plot_regression_curve(self):
         self.R_function()
         plt.scatter(self.x,self.y)
         plt.plot(self.x,self.predicted_y, '--r')
-        plt.title('Plot Regression Line')
+        plt.title('Plot Regression Curve')
         plt.xlabel('x')
         plt.ylabel('y')
         plt.show()  
@@ -117,6 +117,6 @@ if __name__ == "__main__":
     
     lr = Linear_Regression(dataset_x,dataset_y)
     lr.batch_gradient_descent()
-    lr.plot_regression_line()  
+    lr.plot_regression_curve()  
    
     
