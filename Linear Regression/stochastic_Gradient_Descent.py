@@ -46,7 +46,7 @@ class Linear_Regression :
         n = len(self.x)
         converged = False
         # J(theta)
-        J = 2.0/n * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
+        J = 1.0/(2*n) * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
     
         while not converged : 
             for i in range(n):
@@ -54,7 +54,7 @@ class Linear_Regression :
                 gradOne = 1.0/n * (self.betaZero + self.betaOne*self.x[i] - self.y[i])*self.x[i]                
                 self.betaZero = self.betaZero - self.alpha * gradZero
                 self.betaOne = self.betaOne - self.alpha * gradOne            
-            error = 2.0/n * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
+            error = 1.0/(2*n) * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
             
             if abs(J - error) < ep :
                 print ("Converged")
