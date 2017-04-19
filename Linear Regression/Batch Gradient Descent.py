@@ -1,3 +1,9 @@
+"""
+Created on Mon Apr 18 00:11:31 2017
+
+@author: Megamindo_0
+"""
+
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -40,7 +46,7 @@ class Linear_Regression :
         n = len(self.x)
         converged = False
         # J(theta)
-        J = 2.0/n * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
+        J = 1.0/(2*n) * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
     
         while not converged :          
             gradZero = 1.0/n * sum([ (self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
@@ -49,7 +55,7 @@ class Linear_Regression :
             self.betaZero = self.betaZero - self.alpha * gradZero
             self.betaOne = self.betaOne - self.alpha * gradOne
         
-            error = 2.0/n * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
+            error = 1.0/(2*n) * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
             
             if abs(J - error) < ep :
                 print ("Converged")
