@@ -1,3 +1,9 @@
+"""
+Created on Mon Apr 18 00:11:31 2017
+
+@author: Megamindo_0
+"""
+
 import csv
 import numpy as np
 import math
@@ -42,7 +48,7 @@ class Linear_Regression :
         n = len(self.x)
         converged = False
         # J(theta)
-        J = 2.0/n * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
+        J = 1.0/(2*n) * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
     
         batchSize = int(math.sqrt(n))
         while not converged :
@@ -58,7 +64,7 @@ class Linear_Regression :
                 batchBetaZero = self.betaZero - self.alpha * gradZero
                 batchBetaOne = self.betaOne - self.alpha * gradOne
         
-                batchError = 2.0/n * sum([(batchBetaZero + batchBetaZero*self.x[i] - self.y[i]) for i in range(n)])
+                batchError = 1.0/(2*n) * sum([(batchBetaZero + batchBetaZero*self.x[i] - self.y[i]) for i in range(n)])
                 if batchError < tempError :
                     tempBetaZero = batchBetaZero
                     tempBetaOne = batchBetaOne
@@ -68,7 +74,7 @@ class Linear_Regression :
             self.betaZero = tempBetaZero
             self.betaOne = tempBetaOne
         
-            error = 2.0/n * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
+            error = 1.0/(2*n) * sum([(self.betaZero + self.betaOne*self.x[i] - self.y[i]) for i in range(n)])
             
             if abs(J - error) < ep :
                 print ("Converged")
