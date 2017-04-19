@@ -1,3 +1,9 @@
+"""
+Created on Wed Apr 19 21:30:59 2017
+
+@author: Megamindo_0
+"""
+
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
