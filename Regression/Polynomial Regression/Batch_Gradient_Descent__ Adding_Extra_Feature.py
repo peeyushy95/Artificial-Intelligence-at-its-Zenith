@@ -9,11 +9,12 @@ import matplotlib.pyplot as plt
 
 def load_dataset(x,y):
     
-    with open('data.csv') as csvfile:
+    with open('Data.csv') as csvfile:
         readCSV = csv.reader(csvfile, delimiter=',')
         for row in readCSV:
-            x.append(float(row[0]))
-            y.append(float(row[1]))
+            if(row[0] != 'Position'):
+                x.append(float(row[1]))
+                y.append(float(row[2]))
     
    
 #    print ("x = ",x)
@@ -117,6 +118,4 @@ if __name__ == "__main__":
     
     lr = Linear_Regression(dataset_x,dataset_y)
     lr.batch_gradient_descent()
-    lr.plot_regression_curve()  
-   
-    
+    lr.plot_regression_curve()      
